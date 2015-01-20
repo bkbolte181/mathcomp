@@ -40,6 +40,7 @@ def createupdate(request):
 		form = UpdateForm(request.POST)
 		if form.is_valid():
 			form.save()
+			return HttpResponseRedirect(reverse('competition:updates'))
 	else:
 		form = UpdateForm()
 	context = {
