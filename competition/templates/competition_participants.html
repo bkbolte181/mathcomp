@@ -1,0 +1,30 @@
+{% extends 'competition_base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Email</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for competitor in all_competitors %}
+              	<tr>
+              		<td>{{ competitor.id }}</td>
+              		<td>{{ competitor.first_name }}</td>
+              		<td>{{ competitor.last_name }}</td>
+              		<td>{{ competitor.email }}</td>
+              	</tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'competition_base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1>Updates</h1>
+{% for announcement in announcements %}
+<h4>{{ announcement.title }}</h4>
+<p><i>{{ announcement.created_at }}</i> {{ announcement.message }}</p>
+{% endfor %}
+{% endblock %}

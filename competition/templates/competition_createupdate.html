@@ -1,0 +1,18 @@
+{% extends 'competition_base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+<h1>Create Update</h1>
+      <form method="post">
+      	{% csrf_token %}
+        {% for field in form %}
+        	<div style="padding-bottom: 10px;">
+        	{{ field }}
+        	</div>
+        {% endfor %}
+        <button class="btn btn-primary" type="submit">Create Update</button>
+      </form>
+{% endblock %}
