@@ -1,0 +1,11 @@
+{% extends 'competition_base.html' %}
+
+{% block head %}
+
+{% endblock %}
+
+{% block body %}
+          <h1 class="page-header">Competition Information</h1>
+          <p>This is the website for the upcoming math competition, hosted by the Emory Undergraduate Math and Computer Science Majors Association.</p>
+          <p>To get more information about the event, including recent posts, <a href="{% url 'competition:createaccount' %}">create an account</a> or <a href="{% url 'competition:signin' %}">log in</a>.</p>
+{% endblock %}

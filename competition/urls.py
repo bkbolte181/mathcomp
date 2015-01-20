@@ -7,6 +7,7 @@ urlpatterns = patterns('',
 	# Things every user will see
     url(r'^$', 'competition.views.home', name='home'),
     url(r'^updates/$', 'competition.views.updates', name='updates'),
+    url(r'^info/$', 'competition.views.info', name='info'),
     
     # User management URLs
     url(r'^signin/$', 'competition.views.signin', name='signin'),

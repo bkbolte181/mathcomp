@@ -30,8 +30,10 @@
     	<h2 class="form-signin-heading" style="text-align: center;">EUMMA Competition 2014</h2>
 		<a class="btn btn-lg btn-primary btn-block" href="{% url 'competition:signin' %}">Log In</a>
 		<a class="btn btn-lg btn-primary btn-block" href="{% url 'competition:createaccount' %}">Create Account</a>
-		<a class="btn btn-lg btn-primary btn-block" href="http://www.mathcs.emory.edu/">Emory Math/CS Website</a>
-		<a class="btn btn-lg btn-primary btn-block" href="http://www.students.emory.edu/EUMMA/">EUMMA Website</a>
+		<a class="btn btn-lg btn-primary btn-block" href="{% url 'competition:info' %}">Information</a>
+		<a class="btn btn-lg btn-block" href="http://www.mathcs.emory.edu/">Emory Math/CS Website</a>
+		<a class="btn btn-lg btn-block" href="http://www.students.emory.edu/EUMMA/">EUMMA Website</a>
+		<a class="btn btn-lg btn-block" href="https://www.facebook.com/mathandcsemory?fref=ts">Facebook</a>
     </div> <!-- /container -->
   </body>
 </html>

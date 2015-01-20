@@ -18,6 +18,13 @@ def home(request):
 	else:
 		return render(request, 'competition_splash.html', context)
 
+def info(request):
+	''' Info '''
+	context = {
+		'current_page': 'info',
+	}
+	return render(request, 'competition_info.html', context)
+
 @login_required
 def updates(request):
 	context = {
