@@ -48,9 +48,13 @@ class SiteUser(AbstractBaseUser):
 	email = models.EmailField('email address', max_length=200, unique=True,
 		error_messages={
 			'unique': 'A user with that email already exists.',
-		}, help_text="Emory Email Address")
+		}, help_text="Email Address")
 
 class Announcement(models.Model):
 	title = models.CharField(max_length=100)
 	message = models.TextField(max_length=10000)
 	created_at = models.DateTimeField(auto_now_add=True, default=None)
+
+class ResetPassword(models.Model):
+	email = models.EmailField('email address', max_length=200)
+	identifier = models.CharField(max_length=200)

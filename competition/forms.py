@@ -47,6 +47,35 @@ class SignupForm(forms.ModelForm):
 			user.save()
 		return user
 
+class GetPasswordReset(forms.ModelForm):
+	class Meta:
+		model = ResetPassword
+		fields = ('email',)
+		widgets = {
+			'email': forms.TextInput(attrs={'class': 'form-control text-center', 'placeholder': 'Enter Email Address'}),
+		}
+
+class ResetPasswordForm(forms.Form):
+	password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control text-center', 'placeholder': 'Password'}), label='Password', help_text='Choose a password')
+	retype_password = forms.CharField(widget=forms.PasswordInput(attrs={'class': 'form-control text-center', 'placeholder': 'Retype Password'}), label='Retype Password', help_text='Enter the same password as above, for verification.')
+	
+	def clean_retype_password(self):
+		password = self.cleaned_data.get('password')
+		retype_password = self.cleaned_data.get('retype_password')
+		if password and retype_password and password != retype_password:
+			raise forms.ValidationError(
+				self.error_messages['password_mismatch'],
+				code='password_mismatch',
+			    )
+		return retype_password
+	
+	def save(self, commit=True):
+		user = super(SignupForm, self).save(commit=False)
+		user.set_password(self.cleaned_data['password'])
+		if commit:
+			user.save()
+		return user
+
 class UpdateForm(forms.ModelForm):
 	class Meta:
 		model = Announcement
