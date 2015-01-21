@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth import authenticate, login, logout, get_user
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.core.mail import send_mail
 from competition.forms import *
 
 import random
@@ -56,9 +57,14 @@ def resetpassword(request):
 			password_reset_object = ResetPassword.objects.create(email=form.cleaned_data['email'], identifier=random_hash) # Create new object
 			password_reset_object.save()
 			
-			''' This is where you should send the email '''
+			email_content = 'You have requested that your password be reset. The url to do this is '
+			email_content = email_content + reverse('competition:newpassword') + '?id=' + random_hash
 			
-			context['message'] = 'Your password reset email has been sent.' % random_hash
+			email_address = str(form.cleaned_data['email'])
+			
+			''' Need to send the email address here '''
+			
+			context['message'] = 'Your password reset email has been sent.'
 		else:
 			context['message'] = 'Your email address was not found.'
 	else:
